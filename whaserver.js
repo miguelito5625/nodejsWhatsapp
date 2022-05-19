@@ -5,7 +5,7 @@ const { Client } = require('whatsapp-web.js');
 const app = express();
 const port = 3000;
 
-const client = new Client();
+const client = Client({ puppeteer: { headless: true,args: ['--no-sandbox', '--disable-setuid-sandbox']} });
 
 client.on('qr', qr => {
     qrcode.generate(qr, { small: true });
