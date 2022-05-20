@@ -3,14 +3,14 @@ var qrcode = require('qrcode-terminal');
 const fs = require('fs');
 const { Client, LegacySessionAuth } = require('whatsapp-web.js');
 
-// Path where the session data will be stored
-const SESSION_FILE_PATH = './session.json';
+// // Path where the session data will be stored
+// const SESSION_FILE_PATH = './session.json';
 
-// Load the session data if it has been previously saved
-let sessionData;
-if(fs.existsSync(SESSION_FILE_PATH)) {
-    sessionData = require(SESSION_FILE_PATH);
-}
+// // Load the session data if it has been previously saved
+// let sessionData;
+// if(fs.existsSync(SESSION_FILE_PATH)) {
+//     sessionData = require(SESSION_FILE_PATH);
+// }
 
 const app = express();
 const port = 3000;
@@ -23,9 +23,9 @@ const port = 3000;
 // });
 
 const client = new Client({ 
-    authStrategy: new LegacySessionAuth({
-        session: sessionData
-    }),
+    // authStrategy: new LegacySessionAuth({
+    //     session: sessionData
+    // }),
     puppeteer: { 
         headless: true,
         args: ["--no-sandbox"]
