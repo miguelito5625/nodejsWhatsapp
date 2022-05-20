@@ -5,24 +5,28 @@ const { Client } = require('whatsapp-web.js');
 const app = express();
 const port = 3000;
 
-// const client = new Client({ 
-//     authTimeoutMs: 900000,
-//     puppeteer: { headless: true,args: ['--no-sandbox', '--disable-setuid-sandbox']} 
-// });
-const client = new Client({
-    puppeteer: {
-        authTimeout: 0, // https://github.com/pedroslopez/whatsapp-web.js/issues/935#issuecomment-952867521
-        qrTimeoutMs: 0,
+const client = new Client({ 
+    puppeteer: { 
         headless: true,
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-software-rasterizer',
-            '--disable-gpu',
-            '--disable-dev-shm-usage'
-        ]
-    }
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    } 
 });
+
+// const client = new Client({
+//     puppeteer: {
+//         authTimeout: 0, // https://github.com/pedroslopez/whatsapp-web.js/issues/935#issuecomment-952867521
+//         qrTimeoutMs: 0,
+//         headless: true,
+//         args: [
+//             '--no-sandbox',
+//             '--disable-setuid-sandbox',
+//             '--disable-software-rasterizer',
+//             '--disable-gpu',
+//             '--disable-dev-shm-usage'
+//         ]
+//     }
+// });
+
 // const client = new Client();
 
 client.on('qr', qr => {

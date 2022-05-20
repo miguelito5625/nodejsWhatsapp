@@ -14,6 +14,6 @@
     "qrcode-terminal": "^0.12.0",
     "twilio": "^3.76.1",
     "wbm": "^1.1.16",
-    "whatsapp-web.js": "^1.16.6"
+    "whatsapp-web.js": "^1.16.4-alpha.0"
   }
 }
