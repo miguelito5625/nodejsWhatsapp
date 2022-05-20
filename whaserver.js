@@ -39,21 +39,23 @@ client.on('ready', () => {
     });
 
 
-    app.get('/', (req, res) => {
-        res.status(200).json({
-            "msg": "mensaje enviado",
-            "code": 200
-        });
-    });
-
-
-
-    app.listen(port, () => {
-        console.log(`Example app listening on port ${port}`);
-    })
-
+    
 
 });
 
 client.initialize();
+
+app.get('/', (req, res) => {
+    res.status(200).json({
+        "msg": "mensaje enviado",
+        "code": 200
+    });
+});
+
+
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+})
+
 
