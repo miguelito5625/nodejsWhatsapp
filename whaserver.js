@@ -1,5 +1,6 @@
 const express = require('express');
 var qrcode = require('qrcode-terminal');
+const fs = require('fs');
 const { Client, LegacySessionAuth } = require('whatsapp-web.js');
 
 // Path where the session data will be stored
