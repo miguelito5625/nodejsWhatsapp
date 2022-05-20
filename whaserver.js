@@ -5,7 +5,10 @@ const { Client } = require('whatsapp-web.js');
 const app = express();
 const port = 3000;
 
-const client = new Client({ puppeteer: { headless: true,args: ['--no-sandbox', '--disable-setuid-sandbox']} });
+const client = new Client({ 
+    authTimeoutMs: 900000,
+    puppeteer: { headless: true,args: ['--no-sandbox', '--disable-setuid-sandbox']} 
+});
 // const client = new Client();
 
 client.on('qr', qr => {
