@@ -15,11 +15,13 @@ const client = new Client({
         qrTimeoutMs: 0,
         headless: true,
         args: [
-          '--disable-software-rasterizer',
-          '--disable-gpu',
-          '--disable-dev-shm-usage'
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-software-rasterizer',
+            '--disable-gpu',
+            '--disable-dev-shm-usage'
         ]
-      }
+    }
 });
 // const client = new Client();
 
@@ -55,7 +57,7 @@ client.on('ready', () => {
     });
 
 
-    
+
 
 });
 
