@@ -53,7 +53,7 @@ client.on('ready', () => {
 
 
     app.get('/pedir25', (req, res) => {
-        const number = "+50242345578";
+        const number = "+50232082594";
         const text = "Hola, sera que me puede traer un cilindro de 25 libras";
         const chatId = number.substring(1) + "@c.us";
         client.sendMessage(chatId, text);
@@ -64,7 +64,7 @@ client.on('ready', () => {
     });
 
     app.get('/pedir35', (req, res) => {
-        const number = "+50242345578";
+        const number = "+50232082594";
         const text = "Hola, sera que me puede traer un cilindro de 35 libras";
         const chatId = number.substring(1) + "@c.us";
         client.sendMessage(chatId, text);
