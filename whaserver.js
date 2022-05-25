@@ -71,15 +71,19 @@ client.on('ready', () => {
 client.initialize();
 
 app.get('/changedest/:destination', (req, res) => {
+    console.log('change dest');
+    console.log('params:', req.params );
 
-    if (req.query['destination'] === '') {
+    if (req.params['destination'] === '') {
         res.status(400).json({
             "msg": "necesita un parametro despues de /changedest/",
             "code": 400
         });
     }
 
-    destination = req.query['destination'];
+    destination = req.params['destination'];
+    console.log('new dest:', destination);
+
 
     res.status(200).json({
         "msg": `nuevo destinatario: ${destination}`,
