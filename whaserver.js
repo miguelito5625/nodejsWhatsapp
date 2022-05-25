@@ -1,7 +1,7 @@
 const express = require('express');
 var qrcode = require('qrcode-terminal');
 const fs = require('fs');
-const { Client, LegacySessionAuth } = require('whatsapp-web.js');
+const { Client, LocalAuth } = require('whatsapp-web.js');
 
 var destination = "53463151";
 
@@ -25,6 +25,7 @@ const port = 3000;
 // });
 
 const client = new Client({ 
+    authStrategy: new LocalAuth(),
     puppeteer: { 
         headless: true,
         args: ["--no-sandbox"]
