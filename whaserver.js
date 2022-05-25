@@ -3,6 +3,8 @@ var qrcode = require('qrcode-terminal');
 const fs = require('fs');
 const { Client, LegacySessionAuth } = require('whatsapp-web.js');
 
+var destination = "53463151";
+
 // // Path where the session data will be stored
 // const SESSION_FILE_PATH = './session.json';
 
@@ -23,24 +25,11 @@ const port = 3000;
 // });
 
 const client = new Client({ 
-    // authStrategy: new LegacySessionAuth({
-    //     session: sessionData
-    // }),
     puppeteer: { 
         headless: true,
         args: ["--no-sandbox"]
     } 
 });
-
-// Save session values to the file upon successful auth
-// client.on('authenticated', (session) => {
-//     sessionData = session;
-//     fs.writeFile(SESSION_FILE_PATH, JSON.stringify(session), (err) => {
-//         if (err) {
-//             console.error(err);
-//         }
-//     });
-// });
 
 
 client.on('qr', qr => {
@@ -53,7 +42,7 @@ client.on('ready', () => {
 
 
     app.get('/pedir25', (req, res) => {
-        const number = "+50232082594";
+        const number = `+502${destination}`;
         const text = "Hola, sera que me puede traer un cilindro de 25 libras";
         const chatId = number.substring(1) + "@c.us";
         client.sendMessage(chatId, text);
@@ -64,7 +53,7 @@ client.on('ready', () => {
     });
 
     app.get('/pedir35', (req, res) => {
-        const number = "+50232082594";
+        const number = `+502${destination}`;
         const text = "Hola, sera que me puede traer un cilindro de 35 libras";
         const chatId = number.substring(1) + "@c.us";
         client.sendMessage(chatId, text);
@@ -81,12 +70,38 @@ client.on('ready', () => {
 
 client.initialize();
 
+app.get('/changedest/:destination', (req, res) => {
+
+    if (req.query['destination'] === '') {
+        res.status(400).json({
+            "msg": "necesita un parametro despues de /changedest/",
+            "code": 400
+        });
+    }
+
+    destination = req.query['destination'];
+
+    res.status(200).json({
+        "msg": `nuevo destinatario: ${destination}`,
+        "code": 200
+    });
+});
+
+app.get('/destination', (req, res) => {
+    res.status(200).json({
+        "msg": `Destinatario: ${destination}`,
+        "code": 200
+    });
+});
+
 app.get('/', (req, res) => {
     res.status(200).json({
         "msg": "mensaje enviado",
         "code": 200
     });
 });
+
+
 
 
 
